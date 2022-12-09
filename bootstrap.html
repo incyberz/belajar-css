@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bootstrap Tutorial</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			// document.cookie = "materibs=basic";
+			let c = document.cookie;
+			let cooks = c.split(";");
+
+			for (var i = 0; i < cooks.length; i++) {
+				var cook = cooks[i];
+				let menu_aktif = cook.substring(11,100).trim();
+				let materibs = cook.substring(8,100).trim();
+				if(cook.substring(10,11) == "=") $(".div_sub__"+menu_aktif).slideDown();
+				if(cook.substring(7,8) == "=") $(".materibs_"+materibs).fadeIn();
+			}
+		
+			$(".chapter").click(function(){
+				let tid = $(this).prop("id");
+				let rid = tid.split("__");
+				let id = rid[1];
+
+				$(".chapter").removeClass("active_chapter");
+				$(this).addClass("active_chapter");
+				$(".div_sub").hide();
+				$(".div_sub__"+id).fadeIn();
+				document.cookie = "menu_aktif="+id;
+
+			})
+
+			$(".sub").click(function(){
+				if($(this).hasClass("sudah")){
+					$(this).removeClass("sudah");
+				}else{
+					$(this).addClass("sudah");
+				}
+
+				$(".div_sub_materibs").hide();
+				const nama_materibs = $(this).text().toLowerCase();
+				$(".materibs_"+nama_materibs).fadeIn();
+
+				document.cookie = "materibs="+nama_materibs;
+
+			})
+		})
+	</script>
+	<style type="text/css">
+		body{
+			font-family: 'century gothic', sans-serif;
+			display: grid;
+			grid-template-columns: 130px auto;
+		}
+
+		h1{
+			font-size: 14px;
+			margin: 0 0 10px 0;
+			color: blue;
+			text-transform: uppercase;
+		}
+
+		.chapter{ width: 100%; }
+
+		.menu button{
+			border: solid 1px #ccc;
+			border-radius: 2px;
+			cursor: pointer;
+			text-align: left;
+		}
+
+		.menu button:hover{
+			background: #faa;
+			color: white;
+		}
+
+		.bg-ijo{background: #cfc;}
+		.bg-merah{background: #fcc;}
+		.bg-biru{background: #ccf;}
+		.bg-kuning{background: #ffc;}
+		.bg-toska{background: #cff;}
+
+		.menu{
+			width: 120px;
+		}
+
+		.menu_content{
+			width: 100%;
+			text-align: center;
+			font-weight: bold;
+			height: 30px;
+		}
+
+		.chapter{
+			background: #66f;
+			color: white;
+			height: 25px;
+			margin-top: 5px;
+			margin-bottom: 0;
+		}
+
+		.active_chapter{
+			border: solid 2px blue;
+			background: #060;
+			height: 30px;
+		}
+		.sudah{
+			background: #080;
+			color: white;
+		}
+
+		.sub{
+			margin-left: 10px;
+			font-size: 9pt;
+			width: 110px;
+		}
+
+		.div_sub{
+			display: none;
+		}
+
+		.div_materibs{
+			height: 97vh;
+			overflow-y: scroll;
+		}
+
+		.div_sub_materibs, .blok_hasil{
+			border: solid 1px #ccc;
+			padding: 10px;
+			border-radius: 5px;
+			margin-bottom: 20px;
+		}
+
+		.div_sub_materibs{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="menu">
+		<button class="bg-merah menu_content">CONTENTS</button>
+
+		<button class="chapter" id="css__basic">Basic</button>
+		<div class="div_sub div_sub__basic">
+			<button class="sub">Definisi</button>
+			<button class="sub">Install-Bootstrap</button>
+			<button class="sub">Sintaks-Dasar</button>
+			<button class="sub">Class-Selectors</button>
+		</div>
+
+		<button class="chapter" id="css__navmenu">Nav Menu</button>
+		<div class="div_sub div_sub__navmenu">
+			<button class="sub">Nav-Class</button>
+		</div>
+
+
+		<button class="chapter" id="css__objfit">Form Group</button>
+		<div class="div_sub div_sub__objfit">
+			<button class="sub">form-group</button>
+			<button class="sub">form-control</button>
+		</div>
+
+		
+		<button class="chapter" id="css__grid">Bootstrap Grid</button>
+		<div class="div_sub div_sub__grid">
+			<button class="sub ">Grid-System</button>
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- ================================================== -->
+	<!-- CONTENTS -->
+	<!-- ================================================== -->
+	<div class="div_materibs">
+
+		<div class="materibs_definisi div_sub_materibs">
+			<h1>Bootstrap definisi</h1>
+			<ul>
+				<li>Bootstrap adalah Free Frontend Framework CSS</li>
+				<li>Pemakaian Bootstrap dengan cara pemanggilan Bootstrap Classes</li>
+				<li>Bertujuan untuk memudahkan dan mempercepat Web Development</li>
+				<li>Kemampuan Responsive Design</li>
+			</ul>
+		</div>
+
+		<div class="materibs_install-bootstrap div_sub_materibs">
+			<h1>Install Bootstrap</h1>
+			<ul>
+				<li>Offline Style</li>
+				<li>Online Style (CDN)</li>
+			</ul>
+		</div>
+
+		<div class="materibs_sintaks-dasar div_sub_materibs">
+			<h1>Bootstrap Sintaks Dasar</h1>
+			<p>Sintaks dasar mengikuti sintaks dasar CSS</p>
+			<span>Perbedaannya adalah:</span>
+			<ul>
+				<li>Rules Bootstrap tidak bisa diedit (sembarangan)</li>
+				<li>Pemakaian dengan cara memanggil Bootstrap Class</li>
+				<li>Tidak ada pemanggilan dengan selector tag atau id</li>
+			</ul>
+		</div>
+
+		<div class="materibs_class-selectors div_sub_materibs">
+			<h1>Bootstrap Class Selectors</h1>
+			<p>Yaitu nama-nama rule-CSS untuk class tertentu </p>
+			<span>Contoh class:</span>
+			<ul>
+				<li>class <code>row</code>: untuk membuat baris-area</li>
+				<li>class <code>col</code>: untuk membuat kolom-area pada parent class <code>row</code></li>
+				<li>dan ribuan class lainnya</li>
+			</ul>
+		</div>
+
+		<div class="materibs_nav-class div_sub_materibs">
+			<h1>Bootstrap Nav Class</h1>
+			<ul>
+				<li><b>nav</b> class parent nav, ditempatkan pada tag ul</li>
+				<li><b>nav-item</b> pada tag li</li>
+				<li><b>nav-link</b> pada tag a</li>
+				<li><b>justify-content-end</b> right align menu</li>
+				<li><b>nav-tabs</b> tipe tabulasi</li>
+				<li><b>active</b> status li yang aktif</li>
+				<li><b>disabled</b> status disabled</li>
+				<li><b>dropdown</b> pada parent li</li>
+				<li><b>dropdown-menu</b> pada div sub-menu</li>
+				<li><b>dropdown-item</b> pada tag a di sub-menu</li>
+			</ul>
+
+		</div>
+
+
+		<div class="materibs_form-group div_sub_materibs">
+			<h1>Bootstrap form-group</h1>
+			<ul>
+				<li>Untuk memberi batasan antar input</li>
+				<li>default, margin-top: 15px</li>
+			</ul>
+		</div>
+
+
+		<div class="materibs_form-control div_sub_materibs">
+			<h1>Bootstrap form-control</h1>
+			<ul>
+				<li>Memberi style pada setiap input</li>
+				<li>Untuk tag input memberikan efek <code>block</code></li>
+			</ul>
+		</div>
+
+
+
+		<div class="materibs_grid-system div_sub_materibs">
+			<h1>Bootstrap grid-system</h1>
+			<p>Bootstrap Grid System digunakan untuk Responsive Design. Terdiri dari 2 class utama yaitu:</p>
+			<ul>
+				<li><b>row</b> untuk membentuk baris</li>
+				<li><b>col</b> untuk membagi baris menjadi kolom</li>
+			</ul>
+
+			
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

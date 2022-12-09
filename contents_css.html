@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Content | CSS Tutorial</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			// document.cookie = "materi=basic";
+			let c = document.cookie;
+			let cooks = c.split(";");
+
+			for (var i = 0; i < cooks.length; i++) {
+				var cook = cooks[i];
+				let menu_aktif = cook.substring(11,100).trim();
+				let materi = cook.substring(8,100).trim();
+				if(cook.substring(10,11) == "=") $(".div_sub__"+menu_aktif).slideDown();
+				if(cook.substring(7,8) == "=") $(".materi_"+materi).fadeIn();
+			}
+		
+			$(".chapter").click(function(){
+				let tid = $(this).prop("id");
+				let rid = tid.split("__");
+				let id = rid[1];
+
+				$(".chapter").removeClass("active_chapter");
+				$(this).addClass("active_chapter");
+				$(".div_sub").hide();
+				$(".div_sub__"+id).fadeIn();
+				document.cookie = "menu_aktif="+id;
+
+			})
+
+			$(".sub").click(function(){
+				if($(this).hasClass("sudah")){
+					$(this).removeClass("sudah");
+				}else{
+					$(this).addClass("sudah");
+				}
+
+				$(".div_sub_materi").hide();
+				const nama_materi = $(this).text().toLowerCase();
+				$(".materi_"+nama_materi).fadeIn();
+
+				document.cookie = "materi="+nama_materi;
+
+			})
+		})
+	</script>
+
+	<style type="text/css">
+		body{
+			font-family: 'century gothic', sans-serif;
+			display: grid;
+			grid-template-columns: 130px auto;
+		}
+
+		h1{
+			font-size: 14px;
+			margin: 0 0 10px 0;
+			color: blue;
+			text-transform: uppercase;
+		}
+
+		.chapter{ width: 100%; }
+
+		.menu button{
+			border: solid 1px #ccc;
+			border-radius: 2px;
+			cursor: pointer;
+			text-align: left;
+		}
+
+		.menu button:hover{
+			background: #faa;
+			color: white;
+		}
+
+		.bg-ijo{background: #cfc;}
+		.bg-merah{background: #fcc;}
+		.bg-biru{background: #ccf;}
+		.bg-kuning{background: #ffc;}
+		.bg-toska{background: #cff;}
+
+		.menu{
+			width: 120px;
+		}
+
+		.menu_content{
+			width: 100%;
+			text-align: center;
+			font-weight: bold;
+			height: 30px;
+		}
+
+		.chapter{
+			background: #66f;
+			color: white;
+			height: 25px;
+			margin-top: 5px;
+			margin-bottom: 0;
+		}
+
+		.active_chapter{
+			border: solid 2px blue;
+			background: #060;
+			height: 30px;
+		}
+		.sudah{
+			background: #080;
+			color: white;
+		}
+
+		.sub{
+			margin-left: 10px;
+			font-size: 9pt;
+			width: 110px;
+		}
+
+		.div_sub{
+			display: none;
+		}
+
+		.div_materi{
+			height: 97vh;
+			overflow-y: scroll;
+		}
+
+		.div_sub_materi, .blok_hasil{
+			border: solid 1px #ccc;
+			padding: 10px;
+			border-radius: 5px;
+			margin-bottom: 20px;
+		}
+
+		.div_sub_materi{
+			display: none;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="menu">
+		<button class="bg-merah menu_content">CONTENTS</button>
+
+		<button class="chapter" id="css__basic">Basic</button>
+		<div class="div_sub div_sub__basic">
+			<button class="sub">Fonts</button>
+			<button class="sub">Colors</button>
+			<button class="sub">Backgrounds</button>
+			<button class="sub">Margin-Padding</button>
+			<button class="sub">Borders</button>
+			<button class="sub">Text</button>
+			<button class="sub">Hover</button>
+		</div>
+
+		<button class="chapter" id="css__image">Image Style</button>
+		<div class="div_sub div_sub__image">
+			<button class="sub">Profil-Photo</button>
+		</div>
+
+
+		<button class="chapter" id="css__objfit">Object Fit</button>
+		<div class="div_sub div_sub__objfit">
+			<button class="sub">image-fit</button>
+			<button class="sub">bg-wallpaper</button>
+		</div>
+
+		<button class="chapter" id="css__box">Box Sizing</button>
+		<div class="div_sub div_sub__box">
+			<button class="sub">overflow-y</button>
+			<button class="sub">overflow-x</button>
+			<button class="sub">border-box</button>
+		</div>
+
+		
+		<button class="chapter" id="css__grid">CSS Grid</button>
+		<div class="div_sub div_sub__grid">
+			<button class="sub ">CSS-Grid</button>
+		</div>
+
+		<button class="chapter" id="css__flex">CSS Flex</button>
+		<div class="div_sub div_sub__flex">
+			<button class="sub">Flex-Box</button>
+			<button class="sub">Flex-Wrap</button>
+			<button class="sub">Perfect-Center</button>
+		</div>
+
+		<button class="chapter" id="css__mq">Media Queries</button>
+		<div class="div_sub div_sub__mq">
+			<button class="sub">Media-Queries</button>
+			<button class="sub">Mobile-Menu</button>
+		</div>
+
+		<button class="chapter" id="css__layout">CSS Layout</button>
+		<div class="div_sub div_sub__layout">
+			<button class="sub">Position-Static</button>
+			<button class="sub">Position-Relative</button>
+			<button class="sub">Position-Fixed</button>
+			<button class="sub">Position-Absolute</button>
+			<button class="sub">Position-Sticky</button>
+			<button class="sub">Positioning-Text</button>
+		</div>
+
+		<button class="chapter" id="css__zindex">CSS Z-Index</button>
+		<div class="div_sub div_sub__zindex">
+			<button class="sub">Z-Index</button>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="div_materi">
+
+		<div class="materi_fonts div_sub_materi">
+			<h1>CSS fonts</h1>
+			<ul>
+				<li>font-family adalah jenis huruf</li>
+				<li>font-size adalah besar huruf dalam pixel atau point</li>
+				<li>font-weight untuk mempertebal huruf</li>
+				<li>font-style untuk dekorasi huruf</li>
+			</ul>
+
+			<div class="blok_hasil">
+				<p style="font-family: 'brush script mt'">Paragraf ini menggunakan font-family: 'Brush Script MT'</p>
+				<p style="font-family: 'consolas'">Paragraf ini menggunakan font-family: 'consolas'</p>
+				<p style="font-family: 'verdana'; font-size: 30px">Paragraf ini menggunakan font-family: 'verdana'; font-size: 30px</p>
+				<p style="font-family: 'consolas'; font-weight: bold; font-style: italic">Paragraf ini menggunakan font-family: 'consolas'; font-weight: bold; font-style: italic</p>
+
+			</div>
+		</div>
+
+		<div class="materi_colors div_sub_materi">
+			<h1>CSS Colors</h1>
+			<span>Memberi warna teks dapat dengan beberapa cara:</span>
+			<ul>
+				<li>dengan nama warna</li>
+				<li>dengan 6 digit kode Hexa</li>
+				<li>dengan 3 digit kode Hexa</li>
+				<li>dengan kode rgb()</li>
+			</ul>
+
+			<div class="blok_hasil">
+				<p style="color: red">Paragraf ini dengan style="color: red"</p>
+				<p style="color: #0c0cff">Paragraf ini dengan style="color: #0c0cff"</p>
+				<p style="color: #0a0">Paragraf ini dengan style="color: #0a0"</p>
+				<p style="color: rgb(255,67,45)">Paragraf ini dengan style="color: rgb(255,67,45)"</p>
+			</div>
+
+		</div>
+
+		<div class="materi_backgrounds div_sub_materi">
+			<h1>CSS Backgrounds</h1>
+			<span>Memberi latar dapat dengan beberapa cara:</span>
+			<ul>
+				<li>seperti CSS Colors</li>
+				<li>linear-gradient()</li>
+				<li>dengan opacity rgba()</li>
+			</ul>
+
+			<div class="blok_hasil"  style="color: red; background: yellow">
+				Div ini dengan style="color: red; background: yellow"
+			</div>
+
+			<div class="blok_hasil"  style="background: #cff">
+				Div ini dengan style="background: #cff"
+			</div>
+
+			<div class="blok_hasil"  style="background: linear-gradient(white,lightgreen)">
+				Div ini dengan gradasi dari putih ke hijau cerah <pre>style="background: linear-gradient(white,lightgreen)"</pre>
+			</div>
+
+			<div class="blok_hasil"  style="background: linear-gradient(yellow, red)">
+				<p>Div ini dengan style="background: linear-gradient(yellow, red)"</p>
+				<div class="blok_hasil"  style="background: rgba(0, 255, 0, 0.4);">
+					Div ini dengan warna Full Hijau tetapi dengan transparasi 40% <pre>style="background: rgba(0, 255, 0, 0.4);"</pre>
+				</div>
+			</div>
+
+
+
+		</div>
+
+		<div class="materi_margin-padding div_sub_materi">
+			<h1>CSS margin-padding</h1>
+			<ul>
+				<li>Margin artinya batas luar dengan elemen lain</li>
+				<li>Padding adalah batas kedalam dengan elemen yang melingkupinya</li>
+			</ul>
+
+			<div class="blok_hasil">
+				blok hasil
+			
+				<div style="border: solid 1px #ccc; padding: 30px; margin: 50px;">
+					div ini dengan style="border: solid 1px #ccc; padding: 30px; margin: 50px;"
+					
+				</div>	
+			</div>
+
+			<div class="blok_hasil">
+				blok hasil
+				<div style="border: solid 1px #ccc; padding-top: 30px ; margin-right: 65px;">
+					div ini dengan style="border: solid 1px #ccc; padding-top: 30px ; margin-right: 65px;"
+				</div>	
+			</div>
+
+			<div class="blok_hasil">
+				<div style="border: solid 1px #ccc;">
+					blok hasil
+				</div>
+				<div style="border: solid 1px #ccc; padding: 30px 50px 10px 20px; margin: 15px 5px 25px 35px;">
+					div ini dengan style="border: solid 1px #ccc; padding: 30px 50px 10px 20px; margin: 5px 5px 25px 35px;"
+				</div>	
+			</div>
+
+		</div>
+
+		<div class="materi_borders div_sub_materi">
+			<h1>CSS borders</h1>
+			<ul>
+				<li>Border width artinya besar garis border</li>
+				<li>Border style artinya model border: solid/dashed</li>
+				<li>Border color adalah warna border</li>
+			</ul>
+
+			<div style="border:solid 1px blue">
+				<pre>style="border:solid 1px blue"</pre>
+			</div>
+			<br>
+			<div style="border:dashed 3px #0ff">
+				<pre>style="border:dashed 3px #0ff"</pre>
+			</div>
+		</div>
+
+
+		<div class="materi_text div_sub_materi">
+			<h1>CSS text</h1>
+			<ul>
+				<li>letter-spacing untuk merenggangkan huruf</li>
+				<li>word-spacing untuk merenggangkan kata</li>
+				<li>line-height untuk jarak antar baris kalimat</li>
+			</ul>
+
+			<div style="letter-spacing: 3px;" class="blok_hasil">
+				<pre>Ini adalah paragraf dengan style="letter-spacing: 3px;"</pre>
+			</div>
+			<div style="word-spacing: 9px;" class="blok_hasil">
+				<pre>Ini adalah paragraf dengan style="word-spacing: 9px;"</pre>
+			</div>
+			<div class="blok_hasil">
+				<p style="line-height: auto;">Ini adalah paragraf dengan <b>line-height: auto</b> atau tidak perlu didefinisikan. Sit do in nulla ex cupidatat esse non consequat dolore amet velit quis nostrud sit occaecat laboris commodo.</p>
+			</div>
+			<div class="blok_hasil">
+				<p style="line-height: 30px;">Sedangkan ini adalah paragraf dengan <b>line-height: 30px</b>. Sit do in nulla ex cupidatat esse non consequat dolore amet velit quis nostrud sit occaecat laboris commodo.</p>
+			</div>
+		</div>
+
+		<div class="materi_hover div_sub_materi">
+			<h1>CSS hover</h1>
+			<ul>
+				<li><b>hover</b> artinya saat didekati oleh mouse</li>
+				<li><b>transition</b> untuk transisi (perubahan bentuk)</li>
+				<li><b>cursor</b> untuk mengubah bentuk mouse</li>
+				<li><b>text-transform</b> ubah teks menjadi UPPERCASE/lowercase</li>
+				<li><b>letter-spacing</b> untuk menambah efek hover</li>
+				<li><b>transform: scale()</b> untuk memperbesar elemen</li>
+			</ul>
+
+			<style type="text/css">
+				.judulku1:hover {
+					color: red;
+				}
+
+				.judulku2 {transition: .2s; cursor: pointer;}
+				.judulku2:hover {
+					color: blue;
+					font-size:  20px;
+				}
+
+				.judulku3 {transition: .2s; cursor: pointer;}
+				.judulku3:hover {
+					color: blue;
+					text-transform: uppercase;
+					letter-spacing: 2px;
+				}
+
+				.judulku4 {transition: .2s; cursor: pointer;}
+				.judulku4:hover {
+					color: yellow;
+					text-shadow: 0px 0px 5px red;
+				}
+
+				.zoom_img{ transition: .2s;}
+				.zoom_img:hover{transform: scale(1.5);}
+
+			</style>
+
+			<h2 class="judulku1">Judulku1 with Hover</h2>
+			<h4 class="judulku2">Judulku2 with Transition Hover & Pointer</h4>
+			<h4 class="judulku3">Judulku3 with Text Transform & Letter Spacing</h4>
+			<h4 class="judulku4">Judulku4 with Text Shadow</h4>
+
+			<img class="zoom_img" width="100px" height="100px" src="foto.jpg"> Foto dengan transform: scale(1.5)
+		</div>
+
+		<div class="materi_profil-photo div_sub_materi">
+			<h1>CSS Profil-Photo</h1>
+			<ul>
+				<li><b>border-radius</b> untuk membentuk Profil-Photo</li>
+				<li><b>object-fit</b> untuk memebuhi ukuran dg aspek rasio</li>
+			</ul>
+
+			<style type="text/css">
+				.fotoku1{ 
+					width: 100px;
+					height: 100px;
+				}
+				.fotoku2{ 
+					width: 100px;
+					height: 100px;
+					object-fit: cover;
+				}
+				.fotoku3{ 
+					width: 100px;
+					height: 100px;
+					object-fit: cover;
+					border-radius: 50%;
+				}
+				.fotoku4{ 
+					width: 100px;
+					height: 100px;
+					object-fit: cover;
+					border-radius: 50%;
+					padding: 5px;
+					box-shadow: 0px 0px 3px gray;
+					cursor: pointer;
+					transition: .2s;
+					opacity: 85%;
+				}
+				.fotoku4:hover{
+					transform: scale(1.2);
+					box-shadow: 0px 0px 5px red;
+					margin: 10px;
+					opacity: 100%;
+				}
+
+			</style>
+
+			<div style="display: flex; flex-wrap: wrap">
+				<div class="blok_hasil">
+					<img class="fotoku1" src="foto.jpg">
+					<p align="center">fotoku1<br>
+					<small>Tanpa CSS</small></p>	
+				</div>
+
+				<div class="blok_hasil">
+					<img class="fotoku2" src="foto.jpg">
+					<p align="center">fotoku2<br>
+					<small>object-fit: cover</small></p>
+				</div>
+
+				<div class="blok_hasil">
+					<img class="fotoku3" src="foto.jpg">
+					<p align="center">fotoku3<br>
+					<small>border-radius: 50%</small></p>
+				</div>
+
+				<div class="blok_hasil">
+					<img class="fotoku4" src="foto.jpg">
+					<p align="center">fotoku4<br>
+					<small>Final Styling</small></p>
+				</div>
+				
+			</div>
+		</div>
+
+
+		<div class="materi_image-fit div_sub_materi">
+			<h1>CSS image-fit</h1>
+			<ul>
+				<li><b>border-radius</b> untuk membentuk Profil-Photo</li>
+				<li><b>object-fit</b> untuk memebuhi ukuran dg aspek rasio</li>
+			</ul>
+
+			<style type="text/css">
+				.image_fit1{ 
+					width: 100px;
+					height: 100px;
+					object-fit: none;
+				}
+				.image_fit2{ 
+					width: 100px;
+					height: 100px;
+					object-fit: fill;
+				}
+				.image_fit3{ 
+					width: 100px;
+					height: 100px;
+					object-fit: contain;
+				}
+				.image_fit4{ 
+					width: 100px;
+					height: 100px;
+					object-fit: cover;
+				}
+
+			</style>
+
+			<div style="display: flex; flex-wrap: wrap">
+				<div class="blok_hasil">
+					<img class="image_fit1" src="foto.jpg">
+					<p align="center">image_fit1<br>
+					<small>object-fit: none</small></p>	
+				</div>
+
+				<div class="blok_hasil">
+					<img class="image_fit2" src="foto.jpg">
+					<p align="center">image_fit2<br>
+					<small>object-fit: fill</small></p>
+				</div>
+
+				<div class="blok_hasil">
+					<img class="image_fit3" src="foto.jpg">
+					<p align="center">image_fit3<br>
+					<small>object-fit: contain</small></p>
+				</div>
+
+				<div class="blok_hasil">
+					<img class="image_fit4" src="foto.jpg">
+					<p align="center">image_fit4<br>
+					<small>object-fit: cover</small></p>
+				</div>
+				
+			</div>
+		</div>
+
+
+
+		<div class="materi_bg-wallpaper div_sub_materi">
+			<h1>CSS bg-wallpaper</h1>
+			<ul>
+				<li><b>none</b> untuk memebuhi ukuran dg aspek rasio</li>
+				<li><b>fill</b> untuk membentuk Profil-Photo</li>
+				<li><b>contain</b> untuk memebuhi ukuran dg aspek rasio</li>
+				<li><b>cover</b> untuk memebuhi ukuran dg aspek rasio</li>
+			</ul>
+
+			<style type="text/css">
+				.bg_wallpaper{
+					height: 200px;
+					background: url('wallpaper.jpg');
+					color: white;
+					font-weight: bold;
+					text-shadow: 0 0 3px black;
+				}
+			</style>
+
+			<div class="blok_hasil bg_wallpaper" style="background-size: auto;">background-size: auto</div>
+			<div class="blok_hasil bg_wallpaper" style="background-size: contain;">background-size: contain</div>
+			<div class="blok_hasil bg_wallpaper" style="background-size: contain; background-repeat: no-repeat">background-size: contain; background-repeat: no-repeat</div>
+			<div class="blok_hasil bg_wallpaper" style="background-size: cover;">background-size: cover</div>
+			<div class="blok_hasil bg_wallpaper" style="background-size: cover; background-position: center;">background-size: cover; background-position: center;</div>
+		</div>
+
+
+		<div class="materi_overflow-y div_sub_materi">
+			<h1>CSS overflow-y</h1>
+			<ul>
+				<li><b>overflow-y</b> digunakan jika lebar text melebihi layar</li>
+			</ul>
+
+			<style type="text/css">
+				.blok3x3cm{
+					width: 3cm;
+					height: 3cm;
+					border: solid 1px #ccf;
+					font-size: 8pt;
+					margin: 10px;
+				}
+			</style>
+
+			<div class="blok_hasil" style="display: flex;">
+
+				<div class="blok3x3cm">
+					width: 3cm
+					<br>height: 3cm
+					<br>
+					<br>Text akan overflow jika melebihi kapasitas box. Dan tentu hal ini tidak nyaman untuk dilihat baik via mobile ataupun via desktop.
+				</div>
+
+				<div class="blok3x3cm" style="overflow-y: scroll;">
+					width: 3cm
+					<br>height: 3cm
+					<br>
+					<br>Text akan overflow jika melebihi kapasitas box. Tapi hal ini sudah di handle oleh <b>overflow-y: scroll</b>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="materi_overflow-x div_sub_materi">
+			<h1>CSS overflow-x</h1>
+			<ul>
+				<li><b>overflow-x</b> tidak disarankan, terkecuali Anda ingin membuat aplikasi semisal Google Maps</li>
+			</ul>
+
+			<style type="text/css">
+				.bingkai1{
+					width: 10cm;
+					height: 5cm;
+					overflow-x: scroll;
+				}
+
+				.bingkai2bigger{
+					width: 20cm;
+					height: 10cm;
+					background: url('wallpaper.jpg');
+					color: white;
+					text-shadow: 0 0 3px black;
+					font-size: 10pt;
+					padding: 10px;
+				}
+
+			</style>
+
+			<div class="blok_hasil">
+
+				<div class="bingkai1">
+
+					<div class="bingkai2bigger">
+						asd
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="materi_border-box div_sub_materi">
+			<h1>CSS border-box</h1>
+			<ul>
+				<li><b>border-box</b> digunakan untuk mengabaikan padding</li>
+			</ul>
+
+			<span>Berikut adalah 4 box ukuran 3x3 yang ukurannya seharusnya sama.</span>
+			<div class="blok_hasil" style="display: flex;">
+
+				<div class="blok3x3cm">
+					width: 3cm
+					<br>height: 3cm
+				</div>
+
+				<div class="blok3x3cm" style="padding: 12px">
+					width: 3cm
+					<br>height: 3cm
+					<br>padding:12px 
+					<br>
+					<br>Ukuran berubah karena penambahan padding!!
+				</div>
+
+				<div class="blok3x3cm" style="padding: 12px; box-sizing: border-box;">
+					width: 3cm
+					<br>height: 3cm
+					<br>padding:12px
+					<br><b>border-box</b> 
+					<br>
+					<br>Ukuran tetap 3x3cm, 
+					<br>walaupun overflow
+				</div>
+
+				<div class="blok3x3cm" style="padding: 12px; box-sizing: border-box; overflow-y: scroll;">
+					width: 3cm
+					<br>height: 3cm
+					<br>padding:12px
+					<br><b>border-box</b> 
+					<br>
+					<br>Ukuran tetap 3x3cm, 
+					<br>walaupun overflow, dan jika overflow maka dihandle oleh <b>overflow-y: scroll</b>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="materi_css-grid div_sub_materi">
+			<h1>CSS css-grid</h1>
+			<ul>
+				<li><b>css-grid</b> digunakan untuk membuat kolom</li>
+			</ul>
+
+			<style type="text/css">
+				.div_grid{
+					display: grid;
+				}
+
+				.div_grid_persen{
+					grid-template-columns: 20% 50% 30%;
+					column-gap: 20px;
+				}
+
+				.div_grid_pixel{
+					grid-template-columns: 200px auto 150px;
+					column-gap: 10px;
+				}
+
+				.div_grid_persen div{
+					background: #fcf;
+				}
+
+				.div_grid_pixel div{
+					background: #cfc;
+				}
+
+				.div_grid_auto{
+					grid-template-columns: auto auto auto auto;
+					column-gap: 10px;
+				}
+
+				.div_grid_auto div{
+					background: #cff;
+				}
+
+
+
+			</style>
+
+
+			<div class="blok_hasil">
+				<small>
+					display: grid
+					<br>grid-template-columns: 20% 50% 30%;
+					<br>column-gap: 20px; <span style="color:red">(menyebabkan overlap)</span>
+				</small>
+				<div class="blok_hasil div_grid div_grid_persen">
+					<div class="blok_hasil sub_div_grid_persen">
+						Kolom 20%
+					</div>
+					<div class="blok_hasil sub_div_grid_persen">
+						Kolom 50%
+					</div>
+					<div class="blok_hasil sub_div_grid_persen">
+						Kolom 30%
+					</div>
+				</div>
+			</div>
+
+
+			<div class="blok_hasil">
+				<small>
+					display: grid
+					<br>grid-template-columns: 200px auto 150px;
+					<br>column-gap: 10px; <span style="color:green">(size auto mencegah overlap)</span>
+				</small>
+				<div class="blok_hasil div_grid div_grid_pixel">
+					<div class="blok_hasil sub_div_grid_pixel">
+						Kolom 200px
+					</div>
+					<div class="blok_hasil sub_div_grid_pixel">
+						Kolom Auto
+					</div>
+					<div class="blok_hasil sub_div_grid_pixel">
+						Kolom 150px
+					</div>
+				</div>
+			</div>
+
+
+			<div class="blok_hasil">
+				<small>
+					display: grid
+					<br>grid-template-columns: auto auto auto auto;
+					<br>column-gap: 10px;
+				</small>
+				<div class="blok_hasil div_grid div_grid_auto">
+					<div class="blok_hasil sub_div_grid_auto">
+						Kolom auto
+					</div>
+					<div class="blok_hasil sub_div_grid_auto">
+						Kolom auto
+					</div>
+					<div class="blok_hasil sub_div_grid_auto">
+						Kolom auto
+					</div>
+					<div class="blok_hasil sub_div_grid_auto">
+						Kolom auto
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+		<div class="materi_mobile-menu div_sub_materi">
+			<h1>CSS mobile-menu</h1>
+			<ul>
+				<li><b>mobile-menu</b> dapat di switch menggunakan Media Query</li>
+				<li>Mobile menu akan muncul pada layar smartphone (600px)</li>
+			</ul>
+
+			<style type="text/css">
+				.div_menu{
+					display: flex;
+					background: #cfc;
+					padding: 0;
+					/*text-orientation: vertical;*/
+				}
+				.div_menu li{
+					list-style: none;
+					padding: 10px;
+					margin: 0;
+					cursor: pointer;
+					transition: .2s;
+				}
+
+				.div_menu li:hover{
+					background: #fcf;
+					text-shadow: 0 0 3px white;
+					/*font-weight: bold;*/
+					letter-spacing: 2px;
+					text-transform: uppercase;
+				}
+
+				@media(max-width: 600px){
+					.div_menu{
+						display: block;
+					}
+
+					.div_menu li{
+						/*width: 100%;*/
+						text-align: center;
+						border-bottom: solid 1px #ddd;
+					}
+				}
+			</style>
+
+			<div class="blok_hasil">
+				<ul class="div_menu">
+					<li>Home</li>
+					<li>About</li>
+					<li>Services</li>
+					<li>Contact</li>
+				</ul>
+				
+			</div>
+		</div>
+
+
+		<div class="materi_flex-box div_sub_materi">
+			<h1>CSS flex-box</h1>
+			<ul>
+				<li><b>flex-box</b> membuat flexible box, ukuran box tergantung pada isinya</li>
+			</ul>
+
+			<style type="text/css">
+				.div_flex{
+					display: flex;
+				}
+				.div_flex div{
+					background: #dfd;
+				}
+			</style>
+
+			<small>Ukuran Sub Kolom berikut sama besar karena isinya pun sama besar, tapi jika ukuran mobile akan <span style="color: red"><b>overflow</b></span></small>
+			<div class="blok_hasil div_flex">
+				<div class="blok_hasil">Kolom 1</div>
+				<div class="blok_hasil">Kolom 2</div>
+				<div class="blok_hasil">Kolom 3</div>
+				<div class="blok_hasil">Kolom 4</div>
+				<div class="blok_hasil">Kolom 5</div>
+				<div class="blok_hasil">Kolom 6</div>
+				<div class="blok_hasil">Kolom 7</div>
+			</div>
+
+			<small>Ukuran Sub Kolom berikut akan mengikuti isi dari kolom tersebut</small>
+			<div class="blok_hasil div_flex">
+				<div class="blok_hasil">Kolom Menu</div>
+				<div class="blok_hasil">Kolom Content biasanya mempunyai isi yang lebih banyak</div>
+				<div class="blok_hasil">Kolom Kanan</div>
+			</div>
+
+		</div>
+
+
+		<div class="materi_flex-wrap div_sub_materi">
+			<h1>CSS flex-wrap</h1>
+			<ul>
+				<li><b>flex-wrap</b> membuat flexible box terlipat (wrap) jika overflow</li>
+			</ul>
+
+			<style type="text/css">
+				.div_flex_overflow{
+					display: flex;
+					flex-wrap: wrap;
+				}
+
+				.div_flex_overflow div{
+					background: #fdf;
+				}
+			</style>
+
+			<small>Dengan <span style="color: green"><b>flex-wrap: wrap</b></span> membuat kolom terlipat (wrap)</small>
+			<div class="blok_hasil div_flex_overflow">
+				<div class="blok_hasil">Kolom 1</div>
+				<div class="blok_hasil">Kolom 2</div>
+				<div class="blok_hasil">Kolom 3</div>
+				<div class="blok_hasil">Kolom 4</div>
+				<div class="blok_hasil">Kolom 5</div>
+				<div class="blok_hasil">Kolom 6</div>
+				<div class="blok_hasil">Kolom 7</div>
+			</div>
+
+		</div>
+
+		<div class="materi_perfect-center div_sub_materi">
+			<h1>CSS Flexbox :: Perfect-Center</h1>
+			<ul>
+				<li><b>perfect-center</b> menggunakan property:
+					<ul>
+						<li>display: flex</li>
+						<li>justify-content: center</li>
+						<li>align-items: center</li>
+					</ul>
+				</li>
+			</ul>
+
+			<style type="text/css">
+				.div_flex_center{
+					display: flex;
+					height: 200px;
+					/*width: 200px;*/
+					justify-content: center;
+					align-items: center;
+				}
+
+				.div_flex_center div{
+					background: #fdf;
+				}
+
+				.isi_perfect_center{
+					padding: 15px;
+					width: 100px;
+					text-align: center;
+				}
+			</style>
+
+			<div class="blok_hasil div_flex_center">
+				<div class="isi_perfect_center">Perfect Center</div>
+			</div>
+
+		</div>
+
+
+		<div class="materi_media-queries div_sub_materi">
+			<h1>CSS media-queries</h1>
+			<ul>
+				<li><b>media-queries</b> digunakan untuk mengubah CSS saat berbeda perangkat</li>
+				<li>Berikut adalah box dengan:
+					<ul>
+						<li class="layar_desktop">3 kolom pada layar dektop</li>
+						<li class="layar_tablet">2 kolom pada layar tablet (925px)</li>
+						<li class="layar_mobile">1 kolom pada layar smartphone (600px)</li>
+					</ul>
+				</li>
+			</ul>
+
+			<style type="text/css">
+				.div_media{
+					display: grid;
+					grid-template-columns: auto auto auto;
+					column-gap: 20px;
+				}
+
+				.div_kolom_media{
+					height: 100px;
+					background: #cfc;
+				}
+
+				.layar_desktop{ color: blue; font-weight: bold; }
+
+				@media (max-width: 925px){
+					.div_media{
+						grid-template-columns: auto auto;
+					}
+
+					.layar_desktop{ color: black; font-weight: normal; }
+					.layar_tablet{ color: blue; font-weight: bold; }
+
+				}
+
+				@media (max-width: 600px){
+					.div_media{
+						display: block;
+					}
+
+					.layar_desktop{ color: black; font-weight: normal; }
+					.layar_tablet{ color: black; font-weight: normal; }
+					.layar_mobile{ color: blue; font-weight: bold; }
+
+				}
+			</style>
+
+			<div class="blok_hasil div_media">
+
+				<div class="blok_hasil div_kolom_media">
+					Kolom 1
+				</div>
+				<div class="blok_hasil div_kolom_media">
+					Kolom 2
+				</div>
+				<div class="blok_hasil div_kolom_media">
+					Kolom 3
+				</div>
+
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- =================================================== -->
+		<!-- CSS Layout -->
+		<!-- =================================================== -->
+		<div class="materi_position-static div_sub_materi">
+			<h1>CSS position-static</h1>
+			<ul>
+				<li><b>position-static</b> adalah nilai default untuk seluruh elemen</li>
+			</ul>
+
+			<style type="text/css">
+				.div_pos_static{
+					position: static;
+					left: 50px; 
+					/*Left 50px tidak akan berfungsi*/
+				}
+
+				.div_isi{
+					width: 200px;
+					background: #fdf;
+					padding: 10px;
+					font-size: 10pt;
+				}
+			</style>
+
+			<div class="blok_hasil" style="height: 200px">
+				<div class="div_pos_static div_isi">
+					position: static
+					<br>
+					selalu left, top
+				</div>
+				
+			</div>
+		</div>
+
+
+		<div class="materi_position-relative div_sub_materi">
+			<h1>CSS position-relative</h1>
+			<ul>
+				<li><b>position-relative</b> adalah zzz</li>
+			</ul>
+
+			<style type="text/css">
+				.div_pos_relative{
+					position: relative;
+					left: 50px;
+					top: 30px;
+				}
+			</style>
+
+			<div class="blok_hasil" style="height: 200px">
+				<div class="div_pos_relative div_isi">
+					position: relative
+					<br>
+					left: 50px
+					<br>
+					top: 30px
+				</div>
+				
+			</div>
+		</div>
+
+
+		<div class="materi_position-fixed div_sub_materi">
+			<h1>CSS position-fixed</h1>
+			<ul>
+				<li><b>position-fixed</b> acuannya adalah viewport</li>
+				<li>Viewport adalah besar layar browser/gadget</li>
+			</ul>
+
+			<style type="text/css">
+				.div_pos_fixed{
+					position: fixed;
+					left: 50px;
+					top: 30px;
+					display: none;
+					cursor: pointer;
+				}
+			</style>
+
+			<button onclick=" $('.div_pos_fixed').fadeToggle() ">Show/Hide Fixed Box</button>
+
+			<div class="div_pos_fixed div_isi" onclick="$(this).fadeOut();">
+				position: fixed
+				<br>
+				left: 50px of viewport
+				<br>
+				top: 30px of viewport
+			</div>
+
+		</div>
+
+		<div class="materi_position-absolute div_sub_materi">
+			<h1>CSS position-absolute</h1>
+			<ul>
+				<li><b>position-absolute</b> mirip Fixed, tetapi acuannya bukan viewport</li>
+				<li>acuannya adalah body atau blok-relative-parent (blok induk yang bersifat relative)</li>
+			</ul>
+
+			<style type="text/css">
+				.div_pos_absolute{
+					position: absolute;
+					left: 50px;
+					top: 70px;
+				}
+
+				.div_pos_absolute_parent{
+					position: relative;
+					height: 200px;
+				}
+			</style>
+
+			<div class="blok_hasil div_pos_absolute_parent">
+				blok ini adalah parent dan bersifat relative
+				<div class="div_pos_absolute div_isi">
+					position: absolute
+					<br>
+					left: 50px of parent
+					<br>
+					top: 70px of parent
+				</div>
+
+			</div>
+		</div>
+
+		<div class="materi_position-sticky div_sub_materi">
+			<h1>CSS position-sticky</h1>
+			<ul>
+				<li><b>position-sticky</b> artinya nempel ke parent</li>
+				<li>acuannya adalah nilai <b>top</b></li>
+			</ul>
+
+			<style type="text/css">
+				.div_pos_sticky{
+					position: sticky;
+					background: #fcf;
+					padding: 8px;
+					border-top: solid 5px white;
+				}
+
+				.sub_bab{top: 0}
+				.sub_bab_11{top: 0}
+				.sub_bab_12{top: 40px}
+				.sub_bab_13{top: 80px}
+				.sub_bab_14{top: 120px}
+
+				.div_pos_sticky_parent{
+					/*position: relative;*/
+					height: 300px;
+					/*width: 300px;*/
+					overflow-y: scroll;
+					padding-top: 0;
+				}
+			</style>
+
+			<div style="display:grid; grid-template-columns: auto auto; grid-gap: 10px;">
+				<div class="blok_hasil div_pos_sticky_parent">
+					blok ini adalah parent
+					<p>Paragraf pembuka adalah paragraf penjelas untuk keseluruhan bab.</p>
+					<div class="div_pos_sticky sub_bab">
+						Sub Bab 1 Position: Sticky
+					</div>
+					<p>Lorem ipsum id in ea aute dolore nostrud in anim sit in do do exercitation exercitation quis. Eiusmod minim proident laboris magna voluptate fugiat minim culpa sint sed. Dolor commodo velit ex adipisicing duis ut sint ea dolor nisi ad laborum in ea id mollit proident.</p>
+					<p>In in incididunt labore elit ex in sunt ullamco occaecat. Consequat officia in voluptate anim tempor ea reprehenderit dolor pariatur mollit ex voluptate. Aliquip nisi nostrud amet qui enim quis consequat reprehenderit incididunt laborum occaecat cillum ea ea.</p>
+
+					<div class="div_pos_sticky sub_bab">
+						Sub Bab 2 Position: Sticky
+					</div>
+
+					<p>Lorem ipsum eu cupidatat proident sunt ex exercitation laborum anim et. Lorem ipsum quis ut dolore in cupidatat voluptate ex fugiat id aute labore ut irure aliquip consectetur officia eiusmod nulla duis. Ad ex ut consequat elit culpa nisi officia tempor tempor quis exercitation cillum in ut ut commodo.</p>
+
+					<p>Cupidatat dolore reprehenderit velit sed excepteur laboris anim laboris. Veniam incididunt reprehenderit ex occaecat labore in nisi laborum et voluptate cillum et adipisicing ut laboris in labore. Incididunt in minim labore elit in aute irure do amet veniam minim in. Et nulla nostrud consequat sunt duis voluptate dolor ex mollit aute voluptate qui incididunt nostrud excepteur cupidatat aliqua proident.</p>
+
+					<div class="div_pos_sticky sub_bab">
+						Sub Bab 3 Position: Sticky
+					</div>
+
+					<p>Lorem ipsum eu cupidatat proident sunt ex exercitation laborum anim et. Lorem ipsum quis ut dolore in cupidatat voluptate ex fugiat id aute labore ut irure aliquip consectetur officia eiusmod nulla duis. Ad ex ut consequat elit culpa nisi officia tempor tempor quis exercitation cillum in ut ut commodo.</p>
+
+					<p>Cupidatat dolore reprehenderit velit sed excepteur laboris anim laboris. Veniam incididunt reprehenderit ex occaecat labore in nisi laborum et voluptate cillum et adipisicing ut laboris in labore. Incididunt in minim labore elit in aute irure do amet veniam minim in. Et nulla nostrud consequat sunt duis voluptate dolor ex mollit aute voluptate qui incididunt nostrud excepteur cupidatat aliqua proident.</p>
+
+					<div class="div_pos_sticky sub_bab">
+						Sub Bab 4 Position: Sticky
+					</div>
+
+					<p>Lorem ipsum eu cupidatat proident sunt ex exercitation laborum anim et. Lorem ipsum quis ut dolore in cupidatat voluptate ex fugiat id aute labore ut irure aliquip consectetur officia eiusmod nulla duis. Ad ex ut consequat elit culpa nisi officia tempor tempor quis exercitation cillum in ut ut commodo.</p>
+
+					<p>Cupidatat dolore reprehenderit velit sed excepteur laboris anim laboris. Veniam incididunt reprehenderit ex occaecat labore in nisi laborum et voluptate cillum et adipisicing ut laboris in labore. Incididunt in minim labore elit in aute irure do amet veniam minim in. Et nulla nostrud consequat sunt duis voluptate dolor ex mollit aute voluptate qui incididunt nostrud excepteur cupidatat aliqua proident.</p>
+				</div>
+
+				<div class="blok_hasil div_pos_sticky_parent">
+					blok ini adalah parent
+					<p>Paragraf pembuka adalah paragraf penjelas untuk keseluruhan bab.</p>
+					<div class="div_pos_sticky sub_bab_11">
+						Sub Bab 1.1 Position: Sticky
+					</div>
+					<p>Lorem ipsum id in ea aute dolore nostrud in anim sit in do do exercitation exercitation quis. Eiusmod minim proident laboris magna voluptate fugiat minim culpa sint sed. Dolor commodo velit ex adipisicing duis ut sint ea dolor nisi ad laborum in ea id mollit proident.</p>
+					<p>In in incididunt labore elit ex in sunt ullamco occaecat. Consequat officia in voluptate anim tempor ea reprehenderit dolor pariatur mollit ex voluptate. Aliquip nisi nostrud amet qui enim quis consequat reprehenderit incididunt laborum occaecat cillum ea ea.</p>
+
+					<div class="div_pos_sticky sub_bab_12">
+						Sub Bab 1.2 Position: Sticky
+					</div>
+
+					<p>Lorem ipsum eu cupidatat proident sunt ex exercitation laborum anim et. Lorem ipsum quis ut dolore in cupidatat voluptate ex fugiat id aute labore ut irure aliquip consectetur officia eiusmod nulla duis. Ad ex ut consequat elit culpa nisi officia tempor tempor quis exercitation cillum in ut ut commodo.</p>
+
+					<p>Cupidatat dolore reprehenderit velit sed excepteur laboris anim laboris. Veniam incididunt reprehenderit ex occaecat labore in nisi laborum et voluptate cillum et adipisicing ut laboris in labore. Incididunt in minim labore elit in aute irure do amet veniam minim in. Et nulla nostrud consequat sunt duis voluptate dolor ex mollit aute voluptate qui incididunt nostrud excepteur cupidatat aliqua proident.</p>
+
+					<div class="div_pos_sticky sub_bab_13">
+						Sub Bab 1.3 Position: Sticky
+					</div>
+
+					<p>Lorem ipsum eu cupidatat proident sunt ex exercitation laborum anim et. Lorem ipsum quis ut dolore in cupidatat voluptate ex fugiat id aute labore ut irure aliquip consectetur officia eiusmod nulla duis. Ad ex ut consequat elit culpa nisi officia tempor tempor quis exercitation cillum in ut ut commodo.</p>
+
+					<p>Cupidatat dolore reprehenderit velit sed excepteur laboris anim laboris. Veniam incididunt reprehenderit ex occaecat labore in nisi laborum et voluptate cillum et adipisicing ut laboris in labore. Incididunt in minim labore elit in aute irure do amet veniam minim in. Et nulla nostrud consequat sunt duis voluptate dolor ex mollit aute voluptate qui incididunt nostrud excepteur cupidatat aliqua proident.</p>
+
+					<div class="div_pos_sticky sub_bab_14">
+						Sub Bab 1.4 Position: Sticky
+					</div>
+
+					<p>Lorem ipsum eu cupidatat proident sunt ex exercitation laborum anim et. Lorem ipsum quis ut dolore in cupidatat voluptate ex fugiat id aute labore ut irure aliquip consectetur officia eiusmod nulla duis. Ad ex ut consequat elit culpa nisi officia tempor tempor quis exercitation cillum in ut ut commodo.</p>
+
+					<p>Cupidatat dolore reprehenderit velit sed excepteur laboris anim laboris. Veniam incididunt reprehenderit ex occaecat labore in nisi laborum et voluptate cillum et adipisicing ut laboris in labore. Incididunt in minim labore elit in aute irure do amet veniam minim in. Et nulla nostrud consequat sunt duis voluptate dolor ex mollit aute voluptate qui incididunt nostrud excepteur cupidatat aliqua proident.</p>
+				</div>
+			</div>
+
+		</div>
+
+
+
+		<div class="materi_positioning-text div_sub_materi">
+			<h1>CSS positioning-text</h1>
+			<ul>
+				<li><b>positioning-text</b> pada image biasanya dipakai pada Hero Page</li>
+			</ul>
+
+			<style type="text/css">
+				.bg_hero{
+					position: relative;
+				}
+				.img_hero{
+					width: 100%;
+					height: 250px;
+					object-fit: cover;
+				}
+
+				.teks_hero{
+					width: 100%;
+					position: absolute;
+					top: 40%;
+					text-align: center;
+					color: white;
+					text-shadow: 0 0 3px black;
+				}
+
+				.btn_hero{
+					padding: 7px 15px;
+					background: linear-gradient(#5a5, #050);
+					border: solid 1px #ccc;
+					border-radius: 15px;
+					color: white;
+					box-shadow: 0 0 3px black;
+					transition: .2s;
+					cursor: pointer;
+				}
+				.btn_hero:hover{
+					text-transform: uppercase;
+					letter-spacing: 1px;
+					background: linear-gradient(#5c7, #383);
+				}
+
+			</style>
+
+			<div class="blok_hasil bg_hero">
+				<img src="wallpaper.jpg" class="img_hero">
+				<div class="teks_hero">
+					<h2>Selamat Datang di Pantai Cirebon</h2>
+					<button class="btn_hero">Kunjungi</button>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="materi_new-materi div_sub_materi">
+			<h1>CSS new-materi</h1>
+			<ul>
+				<li><b>new-materi</b> dapat di switch menggunakan Media Query</li>
+				<li>Mobile menu akan muncul pada layar smartphone (600px)</li>
+			</ul>
+
+		</div>
+
+
+		<div class="materi_z-index div_sub_materi">
+			<!-- ====================================== -->
+			<!-- Z-INDEX -->
+			<!-- ====================================== -->
+			<style>
+			.z-index_container {
+			  position: relative;
+			}
+
+			.black-box {
+			  position: relative;
+			  z-index: 1;
+			  border: 2px solid black;
+			  height: 100px;
+			  margin: 30px;
+			}
+
+			.gray-box {
+			  position: absolute;
+			  z-index: 3; /* gray box will be above both green and black box */
+			  background: lightgray;
+			  height: 60px;  
+			  width: 70%;
+			  left: 50px;
+			  top: 50px;
+			}
+
+			.green-box {
+			  position: absolute;
+			  z-index: 2; /* green box will be above black box */
+			  background: lightgreen;
+			  width: 35%;
+			  left: 270px;
+			  top: -15px;
+			  height: 100px;
+			}
+			</style>
+
+			<h1>Z-index Example</h1>
+
+			<p>An element with greater stack order is always above an element with a lower stack order.</p>
+
+			<div class="z-index_container">
+			  <div class="black-box">Black box (z-index: 1)</div>
+			  <div class="gray-box">Gray box (z-index: 3)</div>
+			  <div class="green-box">Green box (z-index: 2)</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- ============================================= -->
+		<!-- KODE ANDA PADA BLOK INI -->
+		<!-- ============================================= -->
+		<div class="blok_hasil">
+			Ini adalah paragraf
+			
+			
+		</div>
+		<!-- ============================================= -->
+		<!-- KODE ANDA PADA BLOK INI -->
+		<!-- ============================================= -->
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

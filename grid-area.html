@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS Tutorial</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		body{
+			font-family: 'century gothic', sans-serif;
+		}
+
+		.hh{ grid-area: hh; background-color: #cfc;}
+		.mm{ grid-area: mm; background-color: #cff;}
+		.kk{ grid-area: kk; background-color: #ffc;}
+		.ff{ grid-area: ff; background-color: #fcf;}
+
+		.container{
+			display: grid;
+			grid-template-areas: 
+			'hh hh hh hh hh hh hh hh'
+			'mm mm kk kk kk kk kk kk'
+			'mm mm ff ff ff ff ff ff';
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="hh">
+			<h1>CSS Tutorial</h1>
+			<p>Sit dolore dolor cupidatat sunt in consequat esse commodo minim enim ad laboris.</p>
+		</div>
+		<div class="mm">
+			<p>Menu</p>
+			<p>Irure ea quis occaecat nisi fugiat quis nostrud in. Ad laboris aute eiusmod deserunt duis mollit dolor minim in laboris magna sed esse eu.</p>
+		</div>
+		<div class="kk">
+			<h1>Konten</h1>
+			<p>Lorem ipsum est fugiat consequat et cupidatat ut voluptate nostrud irure nostrud tempor exercitation exercitation dolore ut. Sit dolore dolor cupidatat sunt in consequat esse commodo minim enim ad laboris.</p>
+		</div>
+		<div class="ff">
+			<p>Footer.</p>
+		</div>
+	</div>
+</body>
+</html>

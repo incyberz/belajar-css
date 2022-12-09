@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Github Pages</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="jquery.min.js"></script>
+
+	<style type="text/css">
+		body{
+			font-family: 'century gothic', sans-serif;
+			display: grid;
+			grid-template-columns: 150px auto;
+		}
+
+		h1{
+			font-size: 14px;
+			margin: 0;
+		}
+
+		button{
+			width: 100%;
+			border: solid 1px #ccc;
+			border-radius: 2px;
+			cursor: pointer;
+			text-align: left;
+		}
+
+		button:hover{
+			background: #faa;
+			color: white;
+		}
+
+		.bg-ijo{background: #cfc;}
+		.bg-merah{background: #fcc;}
+		.bg-biru{background: #ccf;}
+		.bg-kuning{background: #ffc;}
+		.bg-toska{background: #cff;}
+
+		.menu{
+			width: 120px;
+		}
+
+		.judul{
+			text-align: center;
+			font-weight: bold;
+			height: 30px;
+		}
+
+		.chapter{
+			background: #66f;
+			color: white;
+			height: 25px;
+			margin-top: 5px;
+			margin-bottom: 0;
+		}
+
+		.active_chapter{
+			border: solid 2px blue;
+			background: #060;
+			height: 30px;
+		}
+		.sudah{
+			background: #080;
+			color: white;
+		}
+
+		.sub{
+			margin-left: 10px;
+			font-size: 9pt;
+			width: 110px;
+		}
+
+		.blok_sub{
+			display: none;
+		}
+
+		.blok_materi{
+			height: 100vh;
+			overflow-y: scroll;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="menu">
+		<button class="bg-merah judul">CONTENTS</button>
+
+		<button class="chapter" id="css__basic">Github Pages</button>
+		<div class="blok_sub blok_sub__basic">
+			<button class="sub">Daftar Github</button>
+			<button class="sub">Verifikasi Email</button>
+			<button class="sub">Buat Repository</button>
+			<button class="sub">Github Desktop</button>
+			<button class="sub">Clone Repository</button>
+			<button class="sub">Ubah File</button>
+			<button class="sub">Push Repository</button>
+			<button class="sub">Preview Page</button>
+		</div>
+
+	</div>
+	<div class="blok_materi">
+
+
+
+		<div id="materi_zindex">
+		</div>
+
+
+
+
+		<!-- ====================================== -->
+		<!-- Z-INDEX -->
+		<!-- ====================================== -->
+		<div id="materi_zindex">
+
+			<style>
+			.zindex_container {
+			  position: relative;
+			}
+
+			.black-box {
+			  position: relative;
+			  z-index: 1;
+			  border: 2px solid black;
+			  height: 100px;
+			  margin: 30px;
+			}
+
+			.gray-box {
+			  position: absolute;
+			  z-index: 3; /* gray box will be above both green and black box */
+			  background: lightgray;
+			  height: 60px;  
+			  width: 70%;
+			  left: 50px;
+			  top: 50px;
+			}
+
+			.green-box {
+			  position: absolute;
+			  z-index: 2; /* green box will be above black box */
+			  background: lightgreen;
+			  width: 35%;
+			  left: 270px;
+			  top: -15px;
+			  height: 100px;
+			}
+			</style>
+
+			
+		</div>
+
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		let c = document.cookie;
+		let cooks = c.split(";");
+
+		for (var i = 0; i < cooks.length; i++) {
+			var cook = cooks[i];
+
+			let menu_aktif = cook.substring(11,100).trim();
+			$(".blok_sub__"+menu_aktif).slideDown();
+			// alert(".blok_sub__"+menu_aktif)
+
+		}
+
+
+	
+		$(".chapter").click(function(){
+			let tid = $(this).prop("id");
+			let rid = tid.split("__");
+			let id = rid[1];
+
+			$(".chapter").removeClass("active_chapter");
+			$(this).addClass("active_chapter");
+			// $(".blok_sub__"+id).fadeToggle();
+			$(".blok_sub").hide();
+			$(".blok_sub__"+id).fadeIn();
+			document.cookie = "menu_aktif="+id;
+
+		})
+
+		$(".sub").click(function(){
+			if($(this).hasClass("sudah")){
+				$(this).removeClass("sudah");
+			}else{
+				$(this).addClass("sudah");
+			}
+		})
+	})
+</script>
