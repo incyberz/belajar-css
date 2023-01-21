@@ -1,0 +1,192 @@
+<style>
+	:root{
+		--lebar_kertas: 21cm;
+		--tinggi_kertas: 29.7cm;
+		--margin_left: 1cm;
+		--margin_right: 1cm;
+		--margin_top: 1cm;
+		--margin_bottom: 1cm;
+		--lebar_kop:  calc(var(--lebar_kertas) - var(--margin_left) -var(--margin_right));
+		--tinggi_kop: 2.68cm;
+		--tinggi_area_ngetik: calc(var(--tinggi_kertas) - var(--margin_top) - var(--margin_bottom) - var(--tinggi_kop) );
+		--tinggi_logo: 2.08cm;
+	}
+
+	* { box-sizing: border-box; }
+
+	body{
+		background: linear-gradient(#ccc,#bbb);
+		min-height: 100vh;
+		margin: 0;
+		padding: 0;
+		font-family: calibri;
+	}
+
+	.kertas_a4{
+		width: 100%;
+		max-width: var(--lebar_kertas);
+		max-height: var(--tinggi_kertas);
+		border: solid 1px #ccc;
+		background: white;
+		margin: auto;
+		padding: var(--margin_top) var(--margin_right) var(--margin_bottom) var(--margin_left) ;
+	}
+
+	.logo_ikmi{ width: 1.8cm; margin-top: 5px; }
+
+	.blok_kop_surat{
+		width: var(--lebar_kop);
+		height: var(--tinggi_kop);
+		background: redz; /*zzz debug*/
+		display: grid;
+		grid-template-columns: 11cm 8cm;
+	}
+
+	.area_ngetik{
+		width: var(--lebar_kop);
+		height: var(--tinggi_area_ngetik);
+		background: purplez; /*zzz*/ 
+	}
+
+	.baris_logo{
+		height: var(--tinggi_logo);
+	}
+
+	.kolom_logo{ 
+		text-align: center;
+		background: yellowz; /*zzz*/ 
+	} 
+	.kolom_alamat{ 
+		background: pinkz; /*zzz*/
+		padding-top: 5px;
+		padding-left: 20px;
+		font-size: 11px;
+		letter-spacing: 1px;
+	}
+
+	.baris_sk{
+		height: calc(var(--tinggi_kop) - var(--tinggi_logo));
+		padding-top: 1.5px;
+	}
+
+	.kolom_sk { background: brown; }
+	.kolom_terakreditasi { background: green; }
+	.kolom_sk,.kolom_terakreditasi { text-align: center; color: white; }
+
+	.blok_logo_n_judul{
+		display: grid;
+		grid-template-columns: 2cm auto;
+	}
+
+	.kolom_sekolah{
+		font-size: 11px;
+		letter-spacing: .2px;
+		font-weight: bold;
+		text-align: center;
+		background: lightgreenz; /*zzz*/
+		padding-right: 7px; /*adjust*/
+		padding-top: 5px; /*adjust*/
+	}
+
+	.kolom_stmik{
+		font-size: 60px;
+		font-weight: bold;
+		color: red;
+		margin-top: -10px;
+		letter-spacing: 5px;
+		padding-left: 10px; /*adjust*/
+	}
+
+	.baris_ikmi{
+		color: blue;
+		background: lightbluez; /*zzz*/
+		font-size: 32px;
+		letter-spacing: 10px;
+	}
+
+	.baris_cirebon{
+		color: green;
+		letter-spacing: 5.5px;
+		font-size: 16px;
+		margin-top: -7px;
+	}
+
+	.baris_ikmi,.baris_cirebon { 
+		padding-left: 10px;
+		text-align: left; 
+		font-weight: bold;
+	}
+
+	.kolom_stmik_n_ikmi{
+		display: grid;
+		grid-template-columns: 5.5cm auto;
+		display: pinkz; /*zzz*/
+	}
+
+	.judul_surat{
+		text-align: center;
+		margin: 15px 0 0 0;
+		font-size: 16pt;
+		letter-spacing: 5px;
+		text-decoration: underline;
+	}
+
+	.nomor_surat{
+		text-align: center;
+		font-size: 10pt;
+		margin-top: -3px;
+		font-family: consolas;
+	}
+
+</style>
+
+
+
+<div class="kertas_a4">
+	<div class="blok_kop_surat">
+		<div class="baris_logo kolom_logo blok_logo_n_judul">
+			<div class="kolom_logo">
+				<img class="logo_ikmi" src="ikmi_logo_small.png">
+			</div>
+			<div class="kolom_sekolah">
+				<div>SEKOLAH TINGGI MANAJEMEN INFORMATIKA DAN KOMPUTER</div>
+				<div class="kolom_stmik_n_ikmi">
+					<div class="kolom_stmik">STMIK</div>
+					<div class="kolom_ikmi_n_cirebon">
+						<div class="baris_ikmi">
+							IKMI
+						</div>
+						<div class="baris_cirebon">
+							CIREBON
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+		<div class="baris_logo kolom_alamat">
+			<div>Alamat Kampus</div>
+			<div>Jl. Perjuangan No. 10B Majasem</div>
+			<div>Kec. Kesambi Kota Cirebon</div>
+			<div>Telp. 0231-490480 - 490481</div>
+			<div>
+				<a href="https://ikmi.ac.id" target="_blank">https://ikmi.ac.id</a>
+				Email:
+				<a href="mailto:info@ikmi.ac.id">info@ikmi.ac.id</a>
+			</div>
+		</div>
+		<div class="baris_sk kolom_sk">
+			SK. MENRISTEKDIKTI NO.1/KPT/I/2015
+		</div>
+		<div class="baris_sk kolom_terakreditasi">
+			TERAKREDITASI BAN-PT			
+		</div>
+	</div>
+
+	<div class="area_ngetik">
+		<h1 class="judul_surat">SURAT TUGAS</h1>
+		<div class="nomor_surat">No. 12.B/AKD/IKMI/VI/2022</div>
+	</div>
+	
+</div>

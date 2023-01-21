@@ -1,0 +1,5 @@
+#jenis_selector li { color: blue; }
+
+#jenis_selector, #istilah_css {
+	font-style: italic;
+}
